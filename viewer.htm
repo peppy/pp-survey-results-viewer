@@ -63,8 +63,15 @@
             opacity: 1;
         }
 
-        .menu {
+        .fixed {
             position: fixed;
+            width: 0;
+            height: 0;
+        }
+
+        .menu {
+            position: relative;
+            left: -140px;
             cursor: arrow;
             justify-content: center;
             user-select: none;
@@ -75,8 +82,6 @@
         }
 
         .menu div {
-            position: relative;
-            left: -140px;
             width: 130px;
             height: 30px;
             line-height: 30px;
@@ -143,14 +148,16 @@
         <div id="all" class="sheet" style="background:url('all.png?v=7')"></div>
     </div>
 
-    <div class="menu">
-        <div>Filter by rank:</div>
-        <div class="button" onmouseover="showSheet(event, '100')">Top 100</div>
-        <div class="button" onmouseover="showSheet(event, '1000')">100~1k</div>
-        <div class="button" onmouseover="showSheet(event, '10000')">1k~10k</div>
-        <div class="button" onmouseover="showSheet(event, '100000')">10k~100k</div>
-        <div class="button" onmouseover="showSheet(event, '1000000')">>100k</div>
-        <div class="button active" onmouseover="showSheet(event, 'all')">All</div>
+    <div class="fixed">
+        <div class="menu">
+            <div>Filter by rank:</div>
+            <div class="button" onmouseover="showSheet(event, '100')">Top 100</div>
+            <div class="button" onmouseover="showSheet(event, '1000')">100~1k</div>
+            <div class="button" onmouseover="showSheet(event, '10000')">1k~10k</div>
+            <div class="button" onmouseover="showSheet(event, '100000')">10k~100k</div>
+            <div class="button" onmouseover="showSheet(event, '1000000')">>100k</div>
+            <div class="button active" onmouseover="showSheet(event, 'all')">All</div>
+        </div>
     </div>
 
 </body>
