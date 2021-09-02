@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <title>2021 osu! star rating and performance points survey results</title>
+
+    <style>
+        body {
+            background: #434343;
+            color: #eee;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 13px;
+            max-width: 1133px;
+            margin: auto;
+        }
+
+        a:link {
+            color: #999;
+        }
+
+        a:visited {
+            color: #999;
+        }
+
+        a:link:active,
+        :visited:active {
+            color: #999;
+        }
+
+        a:link,
+        :visited {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #ddd;
+        }
+
+        .sheets {
+            overflow: hidden;
+            position: absolute;
+            height: 5667px;
+            width: 1133px;
+        }
+
+        .blurb {
+            margin: 30px;
+        }
+
+        .sheet {
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        .sheet.active {
+            opacity: 1;
+        }
+
+        .menu {
+            position: fixed;
+            cursor: arrow;
+            justify-content: center;
+            user-select: none;
+            -webkit-touch-callout: none;
+            /* iOS Safari */
+            -webkit-user-select: none;
+            /* Safari */
+        }
+
+        .menu div {
+            position: relative;
+            left: -140px;
+            width: 130px;
+            height: 30px;
+            line-height: 30px;
+            margin: 4px;
+        }
+
+        .menu .button {
+            background: #333;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .menu div.active {
+            background: #777;
+        }
+    </style>
+
+    <script>
+        function showSheet(evt, sheetName) {
+            var sheets = document.getElementsByClassName("sheet");
+            for (i = 0; i < sheets.length; i++) {
+                sheets[i].className = sheets[i].className.replace(" active", "");
+            }
+
+            var buttons = document.getElementsByClassName("button");
+            for (i = 0; i < buttons.length; i++) {
+                buttons[i].className = buttons[i].className.replace(" active", "");
+            }
+
+            document.getElementById(sheetName).className += " active";
+            evt.currentTarget.className += " active";
+        }
+
+        // arbitrary delay to let loading image show before mass loading individual layers.
+        setTimeout(showAll, 100);
+
+        function showAll() {
+            var sheets = document.getElementsByClassName("sheet");
+            for (i = 0; i < sheets.length; i++) {
+                sheets[i].className = sheets[i].className += " active";
+            }
+        };
+    </script>
+</head>
+
+<body>
+
+    <div class="sheets">
+
+        <div class="blurb">
+            This page summarises 11,691 submissions from a <a
+                href='https://osu.ppy.sh/home/news/2021-08-17-pp-sr-survey'>community survey</a> designed to help guide
+            the future of osu! development. Full raw results available <a
+                href='https://docs.google.com/spreadsheets/d/1T9okcbL0ZzBGP5tCaxuhQawmX5KT7YW9cRpDNkzYaOg'>here</a>
+            (beware this will destroy your browser!).
+        </div>
+
+        <div id="loading" class="sheet active" style="background:url('loading.png')"></div>
+        <div id="100" class="sheet" style="background:url('top100.png?v=7')"></div>
+        <div id="1000" class="sheet" style="background:url('top1000.png?v=7')"></div>
+        <div id="10000" class="sheet" style="background:url('top10000.png?v=7')"></div>
+        <div id="100000" class="sheet" style="background:url('top100000.png?v=7')"></div>
+        <div id="1000000" class="sheet" style="background:url('top1000000.png?v=7')"></div>
+        <div id="all" class="sheet" style="background:url('all.png?v=7')"></div>
+    </div>
+
+    <div class="menu">
+        <div>Filter by rank:</div>
+        <div class="button" onmouseover="showSheet(event, '100')">Top 100</div>
+        <div class="button" onmouseover="showSheet(event, '1000')">100~1k</div>
+        <div class="button" onmouseover="showSheet(event, '10000')">1k~10k</div>
+        <div class="button" onmouseover="showSheet(event, '100000')">10k~100k</div>
+        <div class="button" onmouseover="showSheet(event, '1000000')">>100k</div>
+        <div class="button active" onmouseover="showSheet(event, 'all')">All</div>
+    </div>
+
+</body>
+</html>
